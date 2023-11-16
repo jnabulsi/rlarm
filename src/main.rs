@@ -14,6 +14,7 @@ fn main() {
     std::io::stdin().read_line(&mut input).unwrap();
     let work_duration: u64 = input.trim().parse().unwrap(); 
 
+    println!("See you then.");
     //wait for that amount of time 
     thread::sleep(Duration::from_secs(work_duration));
     
@@ -45,6 +46,7 @@ fn main() {
         *interrupted_clone.lock().unwrap() = true;
     });
 
+    println!("Press Enter to stop.");
     // Sleep until interrupted or a timeout of 5 seconds
     while !*interrupted.lock().unwrap() {
         thread::park_timeout(Duration::from_secs(1)); // Check every second
